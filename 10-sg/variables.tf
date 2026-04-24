@@ -1,4 +1,4 @@
-variable "project"{
+variable "project" {
     default = "roboshop"
 }
 
@@ -6,21 +6,22 @@ variable "environment" {
     default = "dev"
 }
 
-
-
-variable "vpc_id" {
-  type        = string
-  
-}
-
-variable "sg_name" {
-    type = list(string)
+variable "sg_names" {
+    type = list
     default = [
+        # Databases
         "mongodb", "redis", "mysql", "rabbitmq",
+        # Backend
         "catalogue", "user", "cart", "shipping", "payment",
+        # Backend ALB
         "backend_alb",
+        # Frontend
         "frontend",
+        # Frontend ALB
         "frontend_alb",
-        "bastion"
+        # Bastion
+        "bastion",
+        # Openvpn
+        "openvpn"
     ]
 }
